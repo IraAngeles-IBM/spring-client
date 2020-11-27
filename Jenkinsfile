@@ -2,9 +2,6 @@ pipeline {
   agent {
     label 'master'
   }
-  tools {
-    maven 'Apache Maven 3.6.3'
-  }
   stages {
     stage('Login') {
       steps {
