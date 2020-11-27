@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    label 'master'
+    label 'maven'
   }
   stages {
     stage('Login') {
@@ -25,7 +25,7 @@ pipeline {
       stage('Maven Build') {
         steps {
           echo 'Build jar file'
-          sh 'mvn -o clean install -DskipTests=true'
+          sh 'mvn clean install -DskipTests=true'
         }
       }
 
