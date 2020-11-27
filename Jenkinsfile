@@ -22,6 +22,13 @@ pipeline {
         }
       }
 
+      stage('Maven check') {
+        steps {
+          echo 'check maven'
+          sh 'which mvn'
+        }
+      }    
+    
       stage('Maven Build') {
         steps {
           echo 'Build jar file'
