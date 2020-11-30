@@ -2,47 +2,41 @@ pipeline {
   agent {
     label 'maven'
   }
+  environment {
+    LOGIN_URL = 'https://c106-e.us-south.containers.cloud.ibm.com'
+    LOGIN_PORT = '31171'
+    PROJECT = 'springclient-ns'
+  }  
   stages {
     stage('Login') {
       steps {
         withCredentials(bindings: [usernamePassword(
-                    		  credentialsId: 'openshift-login-api-token', 
-                    		  usernameVariable: 'USERNAME',
-                    		  passwordVariable: 'PASSWORD',
-                    		)]) {
+          		  credentialsId: 'openshift-login-api-token', 
+          		  usernameVariable: 'USERNAME',
+          		  passwordVariable: 'PASSWORD',
+          		)]) {
             sh "oc login ${env.LOGIN_URL}:${env.LOGIN_PORT} --token=${PASSWORD}"
           }
 
         }
       }
-
       stage('Delete Project') {
         steps {
           sh 'oc delete project springclient-ns'
         }
       }
-
-      stage('Maven check') {
-        steps {
-          echo 'check maven'
-          sh 'which mvn'
-        }
-      }    
-    
       stage('Maven Build') {
         steps {
           echo 'Build jar file'
           sh 'mvn clean install -DskipTests=true'
         }
       }
-
       stage('Run Unit Tests') {
         steps {
           echo 'Run unit tests'
           sh 'mvn test'
         }
       }
-
       stage('Create Project') {
         steps {
           echo 'Create Project'
@@ -54,7 +48,6 @@ pipeline {
 
         }
       }
-
       stage('Deploy') {
         steps {
           echo 'Deploy application'
@@ -64,7 +57,6 @@ pipeline {
 
         }
       }
-
       stage('Expose') {
         steps {
           echo 'Expose Route'
@@ -74,11 +66,5 @@ pipeline {
 
         }
       }
-
-    }
-    environment {
-      LOGIN_URL = 'https://c106-e.us-south.containers.cloud.ibm.com'
-      LOGIN_PORT = '31171'
-      PROJECT = 'springclient-ns'
     }
   }
