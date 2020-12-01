@@ -2,9 +2,6 @@ pipeline {
   agent {
     label 'maven'
   }
-  tools {
-    maven '3.5.0'
-  }
   environment {
     LOGIN_URL = 'https://c106-e.us-south.containers.cloud.ibm.com'
     LOGIN_PORT = '31171'
