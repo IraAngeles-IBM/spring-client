@@ -3,7 +3,7 @@ pipeline {
     label 'maven'
   }
   tools {
-    maven 'apache-maven-3.5.0'
+    maven '3.5.0'
   }
   environment {
     LOGIN_URL = 'https://c106-e.us-south.containers.cloud.ibm.com'
