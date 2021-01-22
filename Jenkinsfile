@@ -8,9 +8,9 @@ pipeline {
     PROJECT = 'springclient-ns'
   }  
   
-  def mvnHome = tool 'maven'
-  
   stages {
+    def mvnHome = tool 'maven'
+    
     stage('Login') {
       steps {
         withCredentials(bindings: [usernamePassword(
