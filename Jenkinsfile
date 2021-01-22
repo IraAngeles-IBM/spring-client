@@ -6,11 +6,8 @@ pipeline {
     LOGIN_URL = 'https://c106-e.us-south.containers.cloud.ibm.com'
     LOGIN_PORT = '31171'
     PROJECT = 'springclient-ns'
+    mvnHome = tool 'maven'
   }  
-  
-  script{
-    def mvnHome = tool 'maven'
-  }
   
   stages {
     
