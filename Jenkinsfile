@@ -3,8 +3,8 @@ pipeline {
     label 'maven'
   }
   environment {
-    LOGIN_URL = 'https://c106-e.us-south.containers.cloud.ibm.com'
-    LOGIN_PORT = '31171'
+    LOGIN_URL = 'https://c115-e.us-south.containers.cloud.ibm.com'
+    LOGIN_PORT = '30682'
     PROJECT = 'springclient-ns'
     MVNHOME = tool 'maven'
   }  
