@@ -8,8 +8,11 @@ pipeline {
     PROJECT = 'springclient-ns'
   }  
   
-  stages {
+  script{
     def mvnHome = tool 'maven'
+  }
+  
+  stages {
     
     stage('Login') {
       steps {
