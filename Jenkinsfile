@@ -6,7 +6,7 @@ pipeline {
     LOGIN_URL = 'https://c106-e.us-south.containers.cloud.ibm.com'
     LOGIN_PORT = '31171'
     PROJECT = 'springclient-ns'
-    mvnHome = tool 'maven'
+    MVNHOME = tool 'maven'
   }  
   
   stages {
@@ -31,13 +31,13 @@ pipeline {
       stage('Maven Build') {
         steps {
           echo 'Build jar file'
-          sh '${mvnHome}/bin/mvn clean install -DskipTests=true'
+          sh '${MVNHOME}/bin/mvn clean install -DskipTests=true'
         }
       }
       stage('Run Unit Tests') {
         steps {
           echo 'Run unit tests'
-          sh '${mvnHome}/bin/mvn test'
+          sh '${MVNHOME}/bin/mvn test'
         }
       }
       stage('Create Project') {
