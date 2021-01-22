@@ -7,6 +7,9 @@ pipeline {
     LOGIN_PORT = '31171'
     PROJECT = 'springclient-ns'
   }  
+  
+  def mvnHome = tool 'maven'
+  
   stages {
     stage('Login') {
       steps {
@@ -28,13 +31,13 @@ pipeline {
       stage('Maven Build') {
         steps {
           echo 'Build jar file'
-          sh 'mvn clean install -DskipTests=true'
+          sh '${mvnHome}/bin/mvn clean install -DskipTests=true'
         }
       }
       stage('Run Unit Tests') {
         steps {
           echo 'Run unit tests'
-          sh 'mvn test'
+          sh '${mvnHome}/bin/mvn test'
         }
       }
       stage('Create Project') {
