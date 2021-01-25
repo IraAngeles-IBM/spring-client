@@ -3,9 +3,9 @@ pipeline {
     label 'maven'
   }
   environment {
-    LOGIN_URL = 'https://c103-e.us-south.containers.cloud.ibm.com'
-    LOGIN_PORT = '32110'
-    PROJECT = 'springclient-ns'
+    LOGIN_URL = 'https://c115-e.us-south.containers.cloud.ibm.com'
+    LOGIN_PORT = '30682'
+    PROJECT = 'spring-client-ns-lab2'
   }   
   stages {
     stage('Preamble') {
