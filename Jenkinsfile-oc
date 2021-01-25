@@ -5,7 +5,7 @@ pipeline {
   environment {
     LOGIN_URL = 'https://c115-e.us-south.containers.cloud.ibm.com'
     LOGIN_PORT = '30682'
-    PROJECT = 'spring-client-ns-lab2'
+    PROJECT = 'spring-client-ns-lab2-build-config'
   }   
   stages {
     stage('Preamble') {
@@ -59,7 +59,7 @@ pipeline {
         script {
           openshift.withCluster() {
             openshift.withProject("${env.PROJECT}") {
-              openshift.newApp('registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift:1.6~https://github.com/remkohdev/spring-client', "--name=springclient", "--strategy=source", "--allow-missing-images", "--build-env=\'JAVA_APP_JAR=hello.jar\'").narrow('svc').expose()
+              openshift.newApp('registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift:1.6~https://github.com/IraAngeles-IBM/spring-client', "--name=springclient", "--strategy=source", "--allow-missing-images", "--build-env=\'JAVA_APP_JAR=hello.jar\'").narrow('svc').expose()
             }
           }
         }
