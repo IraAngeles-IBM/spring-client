@@ -1,7 +1,7 @@
 kind: "BuildConfig" 
 apiVersion: "v1"
 metadata: 
-  name: "spring-client-pipeline-cli" 
+  name: "spring-client-pipeline" 
   namespace: springclient-ns-lab2
 spec: 
   source: 
