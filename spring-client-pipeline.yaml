@@ -1,8 +1,8 @@
 kind: "BuildConfig" 
 apiVersion: "v1"
 metadata: 
-  name: "spring-client-pipeline" 
-  namespace: spring-client-ns-lab2-jenkins
+  name: "spring-client-pipeline-cli" 
+  namespace: springclient-ns-lab2
 spec: 
   source: 
     git: 
